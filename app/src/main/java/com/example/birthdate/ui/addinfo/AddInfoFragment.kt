@@ -37,6 +37,12 @@ class AddInfoFragment : BaseFragment() {
         saveButton()
         //handle back thread
         onBackPress()
+        //back to main fragment
+        closeButton()
+    }
+
+    private fun closeButton() {
+        binding.imgBack.setOnClickListener { findNavController().navigateUp() }
     }
 
     private fun saveButton() {
