@@ -1,8 +1,12 @@
 package com.example.birthdate.ui.firstpage
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.birthdate.datamodel.MainTableModel
+import com.example.birthdate.localdb.DateRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class MainViewModel() : ViewModel() {
-
+class MainViewModel(val app: Application) : AndroidViewModel(app) {
 
 }

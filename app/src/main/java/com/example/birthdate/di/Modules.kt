@@ -4,6 +4,7 @@ import com.example.birthdate.network.*
 import com.example.birthdate.ui.addinfo.AddInfoViewModel
 import com.example.birthdate.ui.firstpage.MainViewModel
 import com.example.birthdate.ui.showinfo.ShowInfoViewModel
+import com.example.birthdate.ui.splash.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -25,7 +26,8 @@ val networkModules = module {
 val viewModelModule = module {
     viewModel { AddInfoViewModel(get(),get()) }
     viewModel { ShowInfoViewModel() }
-    viewModel { MainViewModel() }
+    viewModel { MainViewModel(get()) }
+    viewModel { SplashViewModel() }
 
 
 }

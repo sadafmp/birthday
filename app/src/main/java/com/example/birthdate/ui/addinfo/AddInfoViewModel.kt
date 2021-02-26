@@ -25,17 +25,16 @@ class AddInfoViewModel(
     val errorMessage: LiveData<String>
         get() = _errorMessage
 
-    private val _name = MutableLiveData<String>()
-    val name: LiveData<String>
-        get() = _name
-
-    val day = MutableLiveData<String>()
+    val name = MutableLiveData<String>("")
 
 
-    val month = MutableLiveData<String>()
+    val day = MutableLiveData<String>("")
 
 
-    val year = MutableLiveData<String>()
+    val month = MutableLiveData<String>("")
+
+
+    val year = MutableLiveData<String>("")
 
 
     fun getCurrencyData() {
@@ -57,7 +56,6 @@ class AddInfoViewModel(
 
     fun insertData(
         mainTableModel: MainTableModel
-
     ) {
         DateRepository.insertData(
             app,

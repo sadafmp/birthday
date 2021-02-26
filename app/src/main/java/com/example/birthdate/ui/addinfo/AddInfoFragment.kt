@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.birthdate.bases.BaseFragment
 import com.example.birthdate.databinding.AddInfoFragmentBinding
 import com.example.birthdate.datamodel.MainTableModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
-class AddInfoFragment : Fragment() {
+class AddInfoFragment : BaseFragment() {
 
 
     private val viewModel: AddInfoViewModel by viewModel()
@@ -31,10 +34,32 @@ class AddInfoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //save button
-        savebutton()
+        saveButton()
+        //handle back thread
+        onBackPress()
+    }
 
-        viewModel.responseCurrencyData.observe(viewLifecycleOwner,{
-            findNavController().navigateUp()
+    private fun saveButton() {
+        binding.btnSave.setOnClickListener {
+            if (checkNull()) {
+                viewModel.getCurrencyData()
+                saveToRoom()
+                invisibleItems()
+                visibleProgress()
+            }
+
+
+        }
+    }
+
+    private fun backPress() {
+        findNavController().navigateUp()
+
+    }
+
+    private fun saveToRoom() {
+        viewModel.responseCurrencyData.observe(viewLifecycleOwner, {
+
             val model = MainTableModel(
                 0,
                 viewModel.name.value.toString(),
@@ -51,19 +76,37 @@ class AddInfoFragment : Fragment() {
                 viewModel.responseCurrencyData.value?.result?.year,
                 viewModel.responseCurrencyData.value?.result?.yearName
             )
-
             viewModel.insertData(
                 model
             )
+            backPress()
         })
-
     }
 
-    private fun savebutton() {
-        binding.btnSave.setOnClickListener {
-            viewModel.getCurrencyData()
+    private fun checkNull(): Boolean {
+        if (viewModel.name.value.equals("") ||
+            viewModel.month.value.equals("") ||
+            viewModel.day.value.equals("") ||
+            viewModel.year.value.equals("")
+        ) {
+            showMessage("لطفا تمامی فیلد ها را پرکنید ")
+            return false
+        } else {
+            return true
         }
+
     }
 
+    private fun visibleProgress() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun invisibleItems() {
+        binding.btnSave.visibility = View.INVISIBLE
+        binding.etName.visibility = View.INVISIBLE
+        binding.etDay.visibility = View.INVISIBLE
+        binding.etMonth.visibility = View.INVISIBLE
+        binding.etYear.visibility = View.INVISIBLE
+    }
 
 }

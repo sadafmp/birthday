@@ -25,8 +25,12 @@ class MainAdapter(val context: Context, val showProductListener: showProductList
         val item = currentList[position]
         holder.binding.data = item
 
-        holder.binding.tvShowList.setOnClickListener {
-            showProductListener.itemClick(item)
+        holder.binding.btnShowList.setOnClickListener {
+            showProductListener.showClick(item)
+        }
+        holder.binding.btnDelete.setOnLongClickListener {
+            showProductListener.deleteClick(item)
+            return@setOnLongClickListener true
         }
     }
 }
@@ -42,5 +46,6 @@ class ViewPagerDiffCallback : DiffUtil.ItemCallback<MainTableModel>() {
 }
 
 interface showProductListener {
-    fun itemClick(item: MainTableModel)
+    fun showClick(item: MainTableModel)
+    fun deleteClick(item: MainTableModel)
 }

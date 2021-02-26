@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">BirthDate</string>
+    <string name="app_name">تاریخ تولد</string>
     <string name="name">صدف</string>
     <string name="birthDate"> %s / %s / %s</string>
     <string name="showFull">نمایش کامل</string>
+    <string name="show_year">سال</string>
+    <string name="show_season">فصل</string>
+    <string name="show_month">ماه</string>
+    <string name="show_day">25</string>
+    <string name="show_age">20سال</string>
+    <string name="show_miladi">2000 oct 8</string>
+    <string name="show_days">روز</string>
+    <string name="Show_year">سال</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

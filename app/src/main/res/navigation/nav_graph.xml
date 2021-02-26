@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/firstFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/firstFragment"
@@ -26,5 +26,17 @@
         android:id="@+id/showInfoFragment"
         android:name="com.example.birthdate.ui.showinfo.ShowInfoFragment"
         android:label="show_info_fragment"
-        tools:layout="@layout/show_info_fragment" />
+        tools:layout="@layout/show_info_fragment" >
+        <argument android:name="dateArgs"
+            app:argType="com.example.birthdate.datamodel.MainTableModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.birthdate.ui.splash.SplashFragment"
+        android:label="splash_fragment"
+        tools:layout="@layout/splash_fragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
 </navigation>
