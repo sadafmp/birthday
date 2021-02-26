@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.birthdate.ui.firstpage.MainFragment"
+        android:label="first_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_firstFragment_to_addInfoFragment"
+            app:destination="@id/addInfoFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_showInfoFragment"
+            app:destination="@id/showInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addInfoFragment"
+        android:name="com.example.birthdate.ui.addinfo.AddInfoFragment"
+        android:label="add_info_fragment"
+        tools:layout="@layout/add_info_fragment" />
+    <fragment
+        android:id="@+id/showInfoFragment"
+        android:name="com.example.birthdate.ui.showinfo.ShowInfoFragment"
+        android:label="show_info_fragment"
+        tools:layout="@layout/show_info_fragment" />
+</navigation>
