@@ -20,7 +20,6 @@ data class MainTableModel(
     @ColumnInfo(name = "self_year")
     val selfYear: String,
 
-
     @ColumnInfo(name = "birth_season")
     val birthSeason: String?,
     @ColumnInfo(name = "birthghamari")

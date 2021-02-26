@@ -33,11 +33,7 @@ class AddInfoFragment : Fragment() {
         //save button
         savebutton()
 
-    }
-
-    private fun savebutton() {
-        binding.btnSave.setOnClickListener {
-            viewModel.getCurrencyData()
+        viewModel.responseCurrencyData.observe(viewLifecycleOwner,{
             findNavController().navigateUp()
             val model = MainTableModel(
                 0,
@@ -59,6 +55,13 @@ class AddInfoFragment : Fragment() {
             viewModel.insertData(
                 model
             )
+        })
+
+    }
+
+    private fun savebutton() {
+        binding.btnSave.setOnClickListener {
+            viewModel.getCurrencyData()
         }
     }
 

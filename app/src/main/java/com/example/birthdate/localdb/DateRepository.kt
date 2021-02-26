@@ -62,12 +62,12 @@ class DateRepository {
 
 
         fun getAll(
-            context: Context,
+            context: Context
         ): LiveData<List<MainTableModel>>? {
 
             dateDataBase = initializeDB(context)
 
-            mainTableModel == dateDataBase!!.dao().getAll()
+            mainTableModel = dateDataBase!!.dao().getAll()
 
             return mainTableModel
         }

@@ -50,8 +50,7 @@ class AddInfoViewModel(
                 )
                 Timber.e("ok")
             } catch (e: Exception) {
-                Timber.e(e)
-                _errorMessage.postValue(e.message)
+                Timber.e(e.toString())
             }
         }
     }
